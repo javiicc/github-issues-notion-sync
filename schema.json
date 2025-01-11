@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "InputConfig",
+    "description": "Input configuration",
+    "type": "object",
+    "properties": {
+        "notion_new_issue": {
+            "title": "Notion New Issue",
+            "description": "Notion status for new GitHub issues",
+            "type": "string",
+            "default": "new-issue"
+        },
+        "notion_open_status": {
+            "title": "Notion Open Status",
+            "description": "Intermediary status other than notion_new_issue where the issue is still open",
+            "default": ["frozen", "backlog", "working-on", "review-qa"],
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "closed_state_map": {
+            "title": "Closed State Map",
+            "description": "Map GitHub closed state reason to the specified closed Notion status",
+            "type": "object",
+            "properties": {
+                "completed": {
+                    "title": "Completed State Reason",
+                    "description": "Map the complete state reason from GitHub to the specified Notion status",
+                    "type": "string",
+                    "default": "completed"
+                },
+                "not_planned": {
+                    "title": "Not Planned State Reason",
+                    "description": "Map the not_planned state reason from GitHub to the specified Notion status",
+                    "type": "string",
+                    "default": "not-planned"
+                }
+            },
+            "required": [ "completed", "not_planned" ],
+            "additionalProperties": false
+        },
+        "notion_page_size": {
+            "title": "Notion Page Size",
+            "description": "Number of pages for paginated requests to the Notion API",
+            "default": 10,
+            "type": "number",
+            "exclusiveMinimum": 0
+        }
+    },
+    "required": [ "notion_new_issue", "notion_open_status", "closed_state_map", "notion_page_size" ],
+    "additionalProperties": false
+}
