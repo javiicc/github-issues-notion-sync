@@ -1,0 +1,19 @@
+name: "GitHub Issues and Notion DB Synchronizer"
+description: 'Synchronize GitHub issues with a Notion database based on the provided configuration'
+author: "Javier Castaño 82763996+javiicc@users.noreply.github.com>"
+inputs:
+  github_token:
+    description: 'User token, to read the GitHub API. Can be passed in using {{ secrets.GITHUB_TOKEN }}'
+    required: true
+  notion_api_key:
+    description: 'Notion API Key, to read the Notion API. Can be passed in using {{ secrets.NOTION_API_KEY }}'
+    required: true
+  notion_db_id_issues:
+    description: 'Notion issues database ID, to connect with the Notion DB. Can be passed in using {{ secrets.NOTION_DB_ID_ISSUES }}'
+    required: true
+  config:
+    description: 'JSON with settings as described in the README'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

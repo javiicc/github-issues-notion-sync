@@ -1,0 +1,15 @@
+[project]
+name = "github-issues-notion-sync"
+version = "0.1.0"
+description = "GitHub Action for Issues and Notion DB Synchronization"
+authors = [
+    {name = "Javier Castaño", email = "82763996+javiicc@users.noreply.github.com"},
+]
+dependencies = ["pydantic~=2.10", "pydantic-settings~=2.7", "pygithub~=2.5"]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
